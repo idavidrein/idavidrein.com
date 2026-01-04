@@ -103,12 +103,14 @@ main {
 }
 
 .highlights-list li {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 16px;
+    align-items: baseline;
 }
 
-.highlights-list span {
+.highlight-year {
+    font-weight: 600;
     color: var(--muted);
 }
 
@@ -163,6 +165,11 @@ main {
     }
 
     .writing-row {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+
+    .highlights-list li {
         grid-template-columns: 1fr;
         gap: 6px;
     }
