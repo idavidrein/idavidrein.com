@@ -1,0 +1,51 @@
+name: Netlify Deploy Preview
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  deploy-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Netlify CLI
+        run: npm install -g netlify-cli
+
+      - name: Deploy preview
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: |
+          netlify deploy \
+            --dir=. \
+            --message="Deploy preview for ${{ github.event.pull_request.head.sha }}" \
+            --json > netlify-deploy-output.json
+          deploy_url=$(node -e "const fs=require('fs'); console.log(JSON.parse(fs.readFileSync('netlify-deploy-output.json','utf8')).deploy_url)")
+          echo "deploy_url=$deploy_url" >> "$GITHUB_OUTPUT"
+
+      - name: Comment deploy preview URL
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const deployUrl = require('fs')
+              .readFileSync('netlify-deploy-output.json', 'utf8');
+            const url = JSON.parse(deployUrl).deploy_url;
+            const body = `✅ Netlify deploy preview: ${url}`;
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body
+            });
