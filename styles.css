@@ -66,13 +66,8 @@ a:hover {
 }
 
 h1 {
-    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-size: clamp(2.6rem, 5vw, 3.8rem);
     letter-spacing: -0.02em;
-}
-
-.subtitle {
-    font-weight: 600;
-    color: var(--muted);
 }
 
 .intro {
@@ -109,6 +104,23 @@ main {
 
 .section p:last-child {
     margin-bottom: 0;
+}
+
+.highlights-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.highlights-list li {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.highlights-list span {
+    color: var(--muted);
 }
 
 .writing-list {
