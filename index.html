@@ -14,11 +14,14 @@
 <body>
     <div class="page">
         <header class="hero">
-            <img src="files/profile_259x345.webp" alt="David Rein" class="profile-photo">
+            <div class="hero-image">
+                <img src="files/profile_259x345.webp" alt="David Rein" class="profile-photo">
+            </div>
             <div class="hero-text">
-                <h1>David Rein</h1>
-                <p class="subtitle">AI researcher at METR · San Francisco</p>
-                <p class="intro">I build agent benchmarks, study the impact of AI tools on developer productivity, and model trends in AI capabilities.</p>
+                <p class="eyebrow">David Rein</p>
+                <h1>AI researcher at METR</h1>
+                <p class="subtitle">San Francisco · Agent evaluation · AI safety</p>
+                <p class="intro">I build agent benchmarks, measure how AI tools change developer productivity, and model trends in AI capabilities.</p>
                 <div class="links">
                     <a href="mailto:idavidrein@gmail.com">Email</a>
                     <a href="https://scholar.google.com/citations?user=MBL93OIAAAAJ&hl=en" target="_blank" rel="noreferrer">Google Scholar</a>
@@ -28,57 +31,69 @@
             </div>
         </header>
 
-        <main class="content">
-            <section>
+        <main>
+            <section id="about-section" class="section">
                 <h2>About</h2>
                 <p>I'm a researcher at <a href="https://metr.org" target="_blank" rel="noreferrer">METR</a>, making <a href="https://arxiv.org/abs/2503.17354" target="_blank" rel="noreferrer">agent benchmarks</a>, <a href="https://arxiv.org/abs/2507.09089" target="_blank" rel="noreferrer">measuring the impacts</a> of AI tools on software developer productivity, and <a href="https://arxiv.org/abs/2503.14499" target="_blank" rel="noreferrer">modeling trends</a> in AI capabilities.</p>
                 <p>I think there's a very good chance that humanity is on track to create AI systems substantially smarter and more capable than us. We need to be <strong>really damn careful</strong> about this, because it's an <a href="https://controlai.com/quotes" target="_blank" rel="noreferrer">open scientific question</a> whether we can control such systems.</p>
                 <p>I'm most well-known for creating <a href="https://arxiv.org/abs/2311.12022" target="_blank" rel="noreferrer">GPQA</a>, one of the (as of mid-2025) most widely used AI capability benchmarks. I've also done <a href="https://arxiv.org/abs/2311.08702" target="_blank" rel="noreferrer">research</a> on scalable oversight (i.e. trying to figure out how to supervise a system that's smarter or more capable than the supervisor), and I was one of the first few employees at <a href="https://cohere.com" target="_blank" rel="noreferrer">Cohere</a>, where I trained embedding models for semantic search.</p>
             </section>
 
-            <section>
+            <section class="section">
                 <h2>Other writing</h2>
                 <ul class="writing-list">
                     <li>
-                        <span class="writing-year">2026</span>
-                        <a href="https://axrp.net/episode/2026/01/03/episode-47-david-rein-metr-time-horizons.html" target="_blank" rel="noreferrer">
-                            AXRP Podcast: David Rein on METR Time Horizons
-                        </a>
+                        <div class="writing-row">
+                            <span class="writing-year">2026</span>
+                            <a href="https://axrp.net/episode/2026/01/03/episode-47-david-rein-metr-time-horizons.html" target="_blank" rel="noreferrer">
+                                AXRP Podcast: David Rein on METR Time Horizons
+                            </a>
+                        </div>
                         <p>A conversation about some of the subtle in-the-weeds details about METR's time horizon methodology.</p>
                     </li>
                     <li>
-                        <span class="writing-year">2025</span>
-                        <a href="https://metr.org/blog/2025-08-12-research-update-towards-reconciling-slowdown-with-time-horizons/" target="_blank" rel="noreferrer">
-                            Research Update: Algorithmic vs. Holistic Evaluation
-                        </a>
+                        <div class="writing-row">
+                            <span class="writing-year">2025</span>
+                            <a href="https://metr.org/blog/2025-08-12-research-update-towards-reconciling-slowdown-with-time-horizons/" target="_blank" rel="noreferrer">
+                                Research Update: Algorithmic vs. Holistic Evaluation
+                            </a>
+                        </div>
                         <p>A comparison of automatic scoring vs. human rubric reviews on real repos.</p>
                     </li>
                     <li>
-                        <span class="writing-year">2025</span>
-                        <a href="https://metr.org/blog/2025-08-11-science-comms-at-metr/" target="_blank" rel="noreferrer">
-                            Science Comms at METR
-                        </a>
+                        <div class="writing-row">
+                            <span class="writing-year">2025</span>
+                            <a href="https://metr.org/blog/2025-08-11-science-comms-at-metr/" target="_blank" rel="noreferrer">
+                                Science Comms at METR
+                            </a>
+                        </div>
                         <p>Some notes on how we communicate nuanced results at METR while preserving clarity.</p>
                     </li>
                     <li>
-                        <span class="writing-year">2024</span>
-                        <a href="https://www.lesswrong.com/posts/wsXCXoyvRi3DnWZ2M/nyu-code-debates-update-postmortem" target="_blank" rel="noreferrer">
-                            NYU Code Debates Update/Postmortem
-                        </a>
+                        <div class="writing-row">
+                            <span class="writing-year">2024</span>
+                            <a href="https://www.lesswrong.com/posts/wsXCXoyvRi3DnWZ2M/nyu-code-debates-update-postmortem" target="_blank" rel="noreferrer">
+                                NYU Code Debates Update/Postmortem
+                            </a>
+                        </div>
                         <p>A write-up of what we learned from running AI-assisted debates with non-programmer judges on simple coding tasks.</p>
                     </li>
                     <li>
-                        <span class="writing-year">2024</span>
-                        <a href="https://www.youtube.com/watch?v=ZANbujPTvOY" target="_blank" rel="noreferrer">
-                            CoLM GPQA Spotlight Talk
-                        </a>
+                        <div class="writing-row">
+                            <span class="writing-year">2024</span>
+                            <a href="https://www.youtube.com/watch?v=ZANbujPTvOY" target="_blank" rel="noreferrer">
+                                CoLM GPQA Spotlight Talk
+                            </a>
+                        </div>
                         <p>Spotlight presentation for GPQA at the first Conference on Language Modeling.</p>
                     </li>
                     <li>
-                        <span class="writing-year">2024</span>
-                        <a href="https://wp.nyu.edu/arg/can-good-benchmarks-contain-mistakes/" target="_blank" rel="noreferrer">
-                            Can Good Benchmarks Contain Mistakes?
-                        </a>
+                        <div class="writing-row">
+                            <span class="writing-year">2024</span>
+                            <a href="https://wp.nyu.edu/arg/can-good-benchmarks-contain-mistakes/" target="_blank" rel="noreferrer">
+                                Can Good Benchmarks Contain Mistakes?
+                            </a>
+                        </div>
                         <p>Why benchmarks can still be useful even when they aren't perfect, and how I think about their limits.</p>
                     </li>
                 </ul>
