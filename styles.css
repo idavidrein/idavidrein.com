@@ -104,7 +104,7 @@ main {
 
 .highlights-list li {
     display: grid;
-    grid-template-columns: 70px 1fr;
+    grid-template-columns: 140px 1fr;
     gap: 16px;
     align-items: baseline;
 }
@@ -112,6 +112,12 @@ main {
 .highlight-year {
     font-weight: 600;
     color: var(--muted);
+}
+
+it {
+    display: inline;
+    font-style: italic;
+    font-size: 0.9em;
 }
 
 .writing-list {
