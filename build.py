@@ -119,6 +119,11 @@ def process_footnotes(html):
     return html
 
 
+def open_links_in_new_tab(html):
+    """Add target="_blank" rel="noreferrer" to external links."""
+    return re.sub(r"<a ", '<a target="_blank" rel="noreferrer" ', html)
+
+
 def build_post(md_path):
     """Convert a single markdown file to HTML."""
     text = md_path.read_text()
@@ -127,6 +132,7 @@ def build_post(md_path):
     md = markdown.Markdown(extensions=["footnotes", "smarty"])
     body_html = md.convert(body_md)
     body_html = process_footnotes(body_html)
+    body_html = open_links_in_new_tab(body_html)
 
     date = meta["date"]
     if isinstance(date, str):
