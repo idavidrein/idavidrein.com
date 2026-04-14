@@ -33,7 +33,7 @@ TEMPLATE = """\
 <body>
     <div class="page">
         <nav class="post-nav">
-            <a href="/">&larr; David Rein</a>
+            <a href="/">&larr; Home</a>
         </nav>
 
         <article class="post">
