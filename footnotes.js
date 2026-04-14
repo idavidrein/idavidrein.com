@@ -27,6 +27,8 @@ function positionPopup(ref) {
 document.addEventListener('click', function (e) {
   var ref = e.target.closest('.footnote-ref');
   if (ref) {
+    // Let links inside the popup work normally
+    if (e.target.closest('.footnote-popup a')) return;
     e.preventDefault();
     e.stopPropagation();
     document.querySelectorAll('.footnote-ref.active').forEach(function (el) {
