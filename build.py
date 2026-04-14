@@ -3,18 +3,22 @@
 
 import re
 import sys
+import textwrap
 from datetime import datetime
 from pathlib import Path
 
 try:
     import markdown
     import yaml
+    from PIL import Image, ImageDraw, ImageFont
 except ImportError:
-    print("Missing dependencies. Install with: pip install markdown pyyaml")
+    print("Missing dependencies. Install with: pip install markdown pyyaml Pillow")
     sys.exit(1)
 
 CONTENT_DIR = Path("content/posts")
 OUTPUT_DIR = Path("posts")
+FONT_PATH = Path("files/fonts/EBGaramond.ttf")
+OG_DIR = OUTPUT_DIR / "og"
 
 TEMPLATE = """\
 <!DOCTYPE html>
@@ -29,6 +33,14 @@ TEMPLATE = """\
     <link rel="icon" type="image/png" sizes="16x16" href="../files/favicon/favicon-16x16.png">
     <link rel="manifest" href="../files/favicon/site.webmanifest">
     <meta name="description" content="{description}">
+    <meta property="og:title" content="{title}">
+    <meta property="og:description" content="{description}">
+    <meta property="og:image" content="https://idavidrein.com/posts/og/{slug}.png">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{title}">
+    <meta name="twitter:description" content="{description}">
+    <meta name="twitter:image" content="https://idavidrein.com/posts/og/{slug}.png">
 </head>
 <body>
     <div class="page">
@@ -119,6 +131,62 @@ def process_footnotes(html):
     return html
 
 
+def _wrap_text(title, font, max_w):
+    """Word-wrap title by measuring with the font."""
+    words = title.split()
+    lines = []
+    current = ""
+    for word in words:
+        test = f"{current} {word}".strip()
+        if font.getbbox(test)[2] > max_w and current:
+            lines.append(current)
+            current = word
+        else:
+            current = test
+    if current:
+        lines.append(current)
+    return lines
+
+
+def generate_og_image(title, slug):
+    """Generate a 1200x630 OG image with the post title."""
+    W, H = 1200, 630
+    BG = (247, 245, 242)  # --bg
+    INK = (31, 41, 51)  # --ink
+    pad_x = 80
+
+    MUTED = (107, 114, 128)  # --muted
+    font_site = ImageFont.truetype(str(FONT_PATH), size=56)
+    site_h = 100  # space reserved for site name at bottom
+
+    # Pick the largest font size that fits the title above the site name
+    max_text_w = W - 2 * pad_x
+    for size in range(140, 30, -2):
+        font = ImageFont.truetype(str(FONT_PATH), size=size)
+        line_h = int(size * 1.35)
+        lines = _wrap_text(title, font, max_text_w)
+        text_h = line_h * len(lines)
+        if text_h <= H - 80 - site_h:
+            break
+
+    img = Image.new("RGB", (W, H), BG)
+    draw = ImageDraw.Draw(img)
+
+    # Center title vertically in the space above the site name
+    title_area_h = H - site_h
+    y = (title_area_h - text_h) // 2
+    for line in lines:
+        draw.text((pad_x, y), line, fill=INK, font=font)
+        y += line_h
+
+    # Site name at bottom
+    draw.text((pad_x, H - site_h), "idavidrein.com", fill=MUTED, font=font_site)
+
+    out_path = OG_DIR / f"{slug}.png"
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    img.save(out_path, "PNG")
+
+
 def open_links_in_new_tab(html):
     """Add target="_blank" rel="noreferrer" to external links."""
     return re.sub(r"<a ", '<a target="_blank" rel="noreferrer" ', html)
@@ -150,8 +218,10 @@ def build_post(md_path):
             date_iso=date_iso,
             date_display=date_display,
             body=body_html,
+            slug=slug,
         )
     )
+    generate_og_image(meta["title"], slug)
     print(f"  {md_path} -> {out_path}")
 
 
