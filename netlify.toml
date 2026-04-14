@@ -1,2 +1,3 @@
 [build]
+  command = "pip install -r requirements.txt && python3 build.py"
   publish = "."
