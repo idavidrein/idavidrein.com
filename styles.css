@@ -193,9 +193,11 @@ it {
 
 /* Popup footnotes */
 
-.footnote-ref {
+.post-body {
     position: relative;
-    display: inline-block;
+}
+
+.footnote-ref {
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
 }
@@ -210,13 +212,9 @@ it {
 .footnote-popup {
     display: none;
     position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
     width: 320px;
-    max-width: 80vw;
+    max-width: calc(100% - 24px);
     padding: 12px 16px;
-    margin-bottom: 8px;
     background: #fff;
     border: 1px solid var(--line);
     border-radius: 8px;
@@ -227,19 +225,18 @@ it {
     color: var(--ink);
 }
 
-/* Invisible bridge so the mouse can travel from the sup to the popup */
+/* Bridge so the mouse can travel from the sup to the popup */
 .footnote-popup::after {
     content: "";
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
-    height: 10px;
+    height: 16px;
 }
 
-.footnote-ref:hover .footnote-popup,
-.footnote-ref:focus .footnote-popup,
-.footnote-ref.active .footnote-popup {
+.footnote-ref.active .footnote-popup,
+.footnote-ref.hover .footnote-popup {
     display: block;
 }
 
