@@ -16,6 +16,7 @@ Science Comms at METR
 AI Companies as 'Hot Springs' for Growing AIs
 Can Good Benchmarks Contain Mistakes?
 A New Color
+AI Systems Could Cover Up Misbehavior
 
 [Research]
 What I Found Stress-Testing Anthropic's Internal Agent Monitoring
