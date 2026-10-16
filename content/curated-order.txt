@@ -11,16 +11,17 @@
 [Essays]
 The Compute Bottleneck Intuition Is Formed Under Unusual Conditions
 A Message to My Friends About AI
+AI Systems Could Cover Up Misbehavior
 WTBU
 Science Comms at METR
 AI Companies as 'Hot Springs' for Growing AIs
 Can Good Benchmarks Contain Mistakes?
 A New Color
-AI Systems Could Cover Up Misbehavior
 
 [Research]
 What I Found Stress-Testing Anthropic's Internal Agent Monitoring
 Sub-agent delegation chaining
+How an assessor could investigate control and monitoring of internal AI agents
 MirrorCode: Evidence that AI can already do some weeks-long coding tasks
 Research Update: Algorithmic vs. Holistic Evaluation
 NYU Code Debates Update/Postmortem
