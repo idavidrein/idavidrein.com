@@ -20,6 +20,7 @@ A New Color
 
 [Research]
 What I Found Stress-Testing Anthropic's Internal Agent Monitoring
+Red-Teaming OpenAI's Internal Agent Monitoring Systems
 Sub-agent delegation chaining
 How an assessor could investigate control and monitoring of internal AI agents
 MirrorCode: Evidence that AI can already do some weeks-long coding tasks
