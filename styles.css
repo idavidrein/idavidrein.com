@@ -210,31 +210,6 @@ main {
     margin-bottom: 0;
 }
 
-.highlights-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-}
-
-.highlights-list li {
-    display: grid;
-    grid-template-columns: 140px 1fr;
-    gap: 16px;
-    align-items: baseline;
-}
-
-.highlight-year {
-    font-weight: 600;
-    color: var(--muted);
-}
-
-it {
-    display: inline;
-    font-style: italic;
-    font-size: 0.9em;
-}
-
 .news-list {
     list-style: none;
     font-size: 1.02rem;
@@ -598,11 +573,6 @@ html.sort-recent .writing-item {
 
     .section {
         padding-top: 0;
-    }
-
-    .highlights-list li {
-        grid-template-columns: 1fr;
-        gap: 6px;
     }
 }
 
